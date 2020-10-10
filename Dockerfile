@@ -1,5 +1,6 @@
 FROM alpine as prebuild
 
+# https://android.googlesource.com/platform/tools/base/+/studio-master-dev/source.md
 ADD https://storage.googleapis.com/git-repo-downloads/repo /usr/bin/repo
 RUN chmod a+x /usr/bin/repo
 
@@ -21,4 +22,6 @@ ENV ANDROID_STUDIO_REVISION studio-master-dev
 WORKDIR /android-studio
 RUN repo init -u https://android.googlesource.com/platform/manifest -b ${ANDROID_STUDIO_REVISION}
 RUN repo sync -c
+
+# https://android.googlesource.com/platform/tools/base/+/studio-master-dev/studio.md
 
